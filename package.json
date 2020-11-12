@@ -1,0 +1,52 @@
+{
+    "name": "prettier-config-get-off-my-lawn",
+    "description": "A highly opinionated, sharable config of Prettier rules to produce beautiful, readable code.",
+    "version": "0.0.0",
+    "author": {
+        "name": "Michael Novotny",
+        "email": "manovotny@gmail.com",
+        "url": "https://manovotny.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/manovotny/prettier-config-get-off-my-lawn.git"
+    },
+    "keywords": [
+        "config",
+        "prettier",
+        "prettier-config"
+    ],
+    "engines": {
+        "node": ">=10.0.0",
+        "yarn": ">=1.0.0"
+    },
+    "main": "index.js",
+    "files": [
+        "index.js"
+    ],
+    "scripts": {
+        "prettier": "prettier --write \"**/*.{js,json,md,yml}\"",
+        "prettier:check": "prettier --check \"**/*.{js,json,md,yml}\"",
+        "test": "yarn prettier:check"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,json,md,yml}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "devDependencies": {
+        "husky": "4.3.0",
+        "lint-staged": "10.5.1",
+        "prettier": "2.1.2"
+    },
+    "peerDependencies": {
+        "prettier": ">=2.0.0"
+    }
+}
