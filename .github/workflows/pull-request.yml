@@ -19,6 +19,11 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ steps.nvm.outputs.version }}
+            - name: Read yarn version
+              id: yvm
+              run: echo "::set-output name=version::$(cat .yvmrc)"
+            - name: Set yarn version
+              run: yarn policies set-version ${{ steps.yvm.outputs.version }}
             - name: Cache node_modules
               uses: actions/cache@v2
               id: cache-node-modules
