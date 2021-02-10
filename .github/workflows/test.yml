@@ -8,8 +8,6 @@ jobs:
               uses: styfle/cancel-workflow-action@0.6.0
               with:
                   access_token: ${{ github.token }}
-            - name: Checkout repo
-              uses: actions/checkout@v2
             - name: Checkout repo, configure node and yarn, and install dependencies
               uses: ./.github/composites/checkout-repo-and-configure-node-and-yarn-and-install-dependencies
             - name: Run tests
