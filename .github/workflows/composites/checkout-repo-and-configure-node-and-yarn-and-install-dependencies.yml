@@ -3,8 +3,6 @@ description: 'Checkout repo, configure node and yarn, and install dependencies.'
 runs:
     using: 'composite'
     steps:
-        - name: Checkout repo
-          uses: actions/checkout@v2
         - name: Read node version
           id: nvm
           run: echo "::set-output name=version::$(cat .nvmrc)"
