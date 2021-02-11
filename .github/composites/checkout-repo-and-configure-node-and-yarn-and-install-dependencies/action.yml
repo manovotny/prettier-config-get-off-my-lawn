@@ -6,6 +6,7 @@ runs:
         - name: Read node version
           id: nvm
           run: echo "::set-output name=version::$(cat .nvmrc)"
+          shell: bash
         # - name: Set node version
         #   uses: actions/setup-node@v1
         #   with:
