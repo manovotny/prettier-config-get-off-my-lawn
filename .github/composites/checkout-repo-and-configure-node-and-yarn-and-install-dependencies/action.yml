@@ -7,29 +7,35 @@ runs:
           id: nvm
           run: echo "::set-output name=version::$(cat .nvmrc)"
           shell: bash
-        # - name: Set node version
-        #   uses: actions/setup-node@v1
-        #   with:
-        #       node-version: ${{ steps.nvm.outputs.version }}
-        # - name: Cache yarn version
-        #   id: yarn-cache
-        #   uses: actions/cache@v2
-        #   with:
-        #       path: '**/.yarn'
-        #       key: yarn-cache-${{ hashFiles('**/.yvmrc') }}
-        # - name: Read yarn version
-        #   id: yvm
-        #   if: steps.yarn-cache.outputs.cache-hit != 'true'
-        #   run: echo "::set-output name=version::$(cat .yvmrc)"
-        # - name: Set yarn version
-        #   if: steps.yarn-cache.outputs.cache-hit != 'true'
-        #   run: yarn policies set-version ${{ steps.yvm.outputs.version }}
-        # - name: Cache node_modules
-        #   id: node-modules-cache
-        #   uses: actions/cache@v2
-        #   with:
-        #       path: '**/node_modules'
-        #       key: node-modules-cache-${{ hashFiles('**/yarn.lock') }}
-        # - name: Install dependencies
-        #   if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        #   run: yarn install --frozen-lockfile
+        - name: Set node version
+          uses: actions/setup-node@v1
+          shell: bash
+          with:
+              node-version: ${{ steps.nvm.outputs.version }}
+        - name: Cache yarn version
+          id: yarn-cache
+          uses: actions/cache@v2
+          shell: bash
+          with:
+              path: '**/.yarn'
+              key: yarn-cache-${{ hashFiles('**/.yvmrc') }}
+        - name: Read yarn version
+          id: yvm
+          if: steps.yarn-cache.outputs.cache-hit != 'true'
+          run: echo "::set-output name=version::$(cat .yvmrc)"
+          shell: bash
+        - name: Set yarn version
+          if: steps.yarn-cache.outputs.cache-hit != 'true'
+          run: yarn policies set-version ${{ steps.yvm.outputs.version }}
+          shell: bash
+        - name: Cache node_modules
+          id: node-modules-cache
+          uses: actions/cache@v2
+          shell: bash
+          with:
+              path: '**/node_modules'
+              key: node-modules-cache-${{ hashFiles('**/yarn.lock') }}
+        - name: Install dependencies
+          if: steps.node-modules-cache.outputs.cache-hit != 'true'
+          run: yarn install --frozen-lockfile
+          shell: bash
