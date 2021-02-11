@@ -11,6 +11,6 @@ jobs:
             - name: Checkout repo
               uses: actions/checkout@v2
             - name: Checkout repo, configure node and yarn, and install dependencies
-              uses: .github/composites/checkout-repo-and-configure-node-and-yarn-and-install-dependencies
+              uses: ./.github/actions/checkout-repo-and-configure-node-and-yarn-and-install-dependencies
             - name: Run tests
               run: yarn test
