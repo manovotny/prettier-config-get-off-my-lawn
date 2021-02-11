@@ -9,13 +9,11 @@ runs:
           shell: bash
         - name: Set node version
           uses: actions/setup-node@v1
-          shell: bash
           with:
               node-version: ${{ steps.nvm.outputs.version }}
         - name: Cache yarn version
           id: yarn-cache
           uses: actions/cache@v2
-          shell: bash
           with:
               path: '**/.yarn'
               key: yarn-cache-${{ hashFiles('**/.yvmrc') }}
@@ -31,7 +29,6 @@ runs:
         - name: Cache node_modules
           id: node-modules-cache
           uses: actions/cache@v2
-          shell: bash
           with:
               path: '**/node_modules'
               key: node-modules-cache-${{ hashFiles('**/yarn.lock') }}
