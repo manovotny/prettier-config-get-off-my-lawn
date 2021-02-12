@@ -15,9 +15,11 @@ jobs:
               id: nvm
               run: echo "::set-output name=version::$(cat .nvmrc)"
             - name: Set node version
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v2
               with:
+                  always-auth: true
                   node-version: ${{ steps.nvm.outputs.version }}
+                  registry-url: 'https://registry.npmjs.org'
             - name: Cache yarn version
               id: yarn-cache
               uses: actions/cache@v2
