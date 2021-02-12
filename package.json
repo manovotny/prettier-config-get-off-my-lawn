@@ -1,7 +1,7 @@
 {
     "name": "prettier-config-get-off-my-lawn",
     "description": "A highly opinionated, sharable config of Prettier rules to produce beautiful, readable code.",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "author": {
         "name": "Michael Novotny",
         "email": "manovotny@gmail.com",
