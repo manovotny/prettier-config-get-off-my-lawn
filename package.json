@@ -30,10 +30,8 @@
         "prettier:check": "prettier --check \"**/*.{js,json,md,yml}\"",
         "test": "yarn prettier:check"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
+    "git": {
+        "pre-commit": "lint-staged"
     },
     "lint-staged": {
         "*.{js,json,md,yml}": [
@@ -42,7 +40,7 @@
         ]
     },
     "devDependencies": {
-        "husky": "4.3.5",
+        "@zeit/git-hooks": "0.1.4",
         "lint-staged": "10.5.3",
         "prettier": "2.2.1"
     },
